@@ -1,5 +1,8 @@
 from django import forms
 
+from .models import Season, Drop, Product
+
+
 class SupplierForm(forms.Form):
     name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
@@ -75,3 +78,33 @@ class BuyerForm(forms.Form):
         'data-val': 'true',
         'data-val-required': 'Please enter retype_password',
     }))
+
+
+class SeasonForm(forms.ModelForm):
+    class Meta:
+        model = Season
+        fields = '__all__'
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'})
+            'description': forms.TextInput(attrs={'class': 'form-control'})
+        }
+
+
+class DropForm(forms.ModelForm):
+    class Meta:
+        model = Drop
+        fields = '__all__'
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'})
+        }
+
+
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'})
+            'sortno': forms.TextInput(attrs={'class': 'form-control'})
+        }
