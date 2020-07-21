@@ -3,6 +3,9 @@ from django.contrib import admin
 from .models import (
     Supplier,
     Buyer,
+    Season,
+    Drop,
+    Product
 )
 
 class SupplierAdmin(admin.ModelAdmin):
@@ -13,3 +16,6 @@ class BuyerAdmin(admin.ModelAdmin):
 
 admin.site.register(Supplier, SupplierAdmin)
 admin.site.register(Buyer, BuyerAdmin)
+admin.site.register(Season)
+admin.site.register(Drop)
+admin.site.register(Product)
