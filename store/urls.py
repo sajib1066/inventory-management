@@ -6,7 +6,8 @@ from .views import (
     create_buyer,
     BuyerListView,
     create_season,
-    create_drop
+    create_drop,
+    create_product
 )
 
 urlpatterns = [
@@ -16,4 +17,5 @@ urlpatterns = [
     path('buyer-list/', BuyerListView.as_view(), name='buyer-list'),
     path('create-season/', create_season, name='create-season'),
     path('create-drop/', create_drop, name='create-drop'),
+    path('create-product/', create_product, name='create-product'),
 ]

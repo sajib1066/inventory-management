@@ -104,8 +104,8 @@ class DropForm(forms.ModelForm):
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = ['name', 'sortno']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'sortno': forms.TextInput(attrs={'class': 'form-control'})
+            'name': forms.TextInput(attrs={'class': 'form-control', 'id': 'name'}),
+            'sortno': forms.NumberInput(attrs={'class': 'form-control', 'id': 'sortno'})
         }

@@ -88,3 +88,16 @@ def create_drop(request):
         'form': forms
     }
     return render(request, 'store/create_drop.html', context)
+
+# Product views
+def create_product(request):
+    forms = ProductForm()
+    if request.method == 'POST':
+        forms = ProductForm(request.POST)
+        if forms.is_valid():
+            forms.save()
+            return redirect('home')
+    context = {
+        'form': forms
+    }
+    return render(request, 'store/create_product.html', context)
