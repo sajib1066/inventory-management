@@ -99,11 +99,18 @@ def create_drop(request):
         forms = DropForm(request.POST)
         if forms.is_valid():
             forms.save()
-            return redirect('home')
+            return redirect('drop-list')
     context = {
         'form': forms
     }
     return render(request, 'store/create_drop.html', context)
+
+
+class DropListView(ListView):
+    model = Drop
+    template_name = 'store/drop_list.html'
+    context_object_name = 'drop'
+
 
 # Product views
 def create_product(request):
