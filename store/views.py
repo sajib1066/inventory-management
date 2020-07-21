@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.views.generic import ListView
 
 from users.models import User
 from .models import (
@@ -20,8 +21,14 @@ def create_supplier(request):
             if password == retype_password:
                 user = User.objects.create_user(username=username, password=password, email=email, is_supplier=True)
                 Supplier.objects.create(user=user, name=name, address=address)
-                return redirect('home')
+                return redirect('supplier-list')
     context = {
         'form': forms
     }
     return render(request, 'store/create_supplier.html', context)
+
+
+class SupplierListView(ListView):
+    model = Supplier
+    template_name = 'store/supplier_list.html'
+    context_object_name = 'supplier'
