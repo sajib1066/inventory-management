@@ -4,7 +4,8 @@ from .views import (
     create_supplier,
     SupplierListView,
     create_buyer,
-    BuyerListView
+    BuyerListView,
+    create_season
 )
 
 urlpatterns = [
@@ -12,4 +13,5 @@ urlpatterns = [
     path('supplier-list/', SupplierListView.as_view(), name='supplier-list'),
     path('create-buyer/', create_buyer, name='create-buyer'),
     path('buyer-list/', BuyerListView.as_view(), name='buyer-list'),
+    path('create-season/', create_season, name='create-season'),
 ]

@@ -83,10 +83,11 @@ class BuyerForm(forms.Form):
 class SeasonForm(forms.ModelForm):
     class Meta:
         model = Season
-        fields = '__all__'
+        fields = ['name', 'description']
+
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'})
-            'description': forms.TextInput(attrs={'class': 'form-control'})
+            'name': forms.TextInput(attrs={'class': 'form-control', 'id': 'name'}),
+            'description': forms.TextInput(attrs={'class': 'form-control', 'id': 'description'})
         }
 
 
@@ -105,6 +106,6 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = '__all__'
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'})
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
             'sortno': forms.TextInput(attrs={'class': 'form-control'})
         }

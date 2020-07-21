@@ -6,7 +6,7 @@ from .models import (
     Supplier,
     Buyer
 )
-from .forms import SupplierForm, BuyerForm
+from .forms import SupplierForm, BuyerForm, SeasonForm, DropForm, ProductForm
 
 # Supplier views
 def create_supplier(request):
@@ -61,3 +61,17 @@ class BuyerListView(ListView):
     model = Buyer
     template_name = 'store/buyer_list.html'
     context_object_name = 'buyer'
+
+
+# Season views
+def create_season(request):
+    forms = SeasonForm()
+    if request.method == 'POST':
+        forms = SeasonForm(request.POST)
+        if forms.is_valid():
+            forms.save()
+            return redirect('home')
+    context = {
+        'form': forms
+    }
+    return render(request, 'store/create_season.html', context)
