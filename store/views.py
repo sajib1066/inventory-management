@@ -119,8 +119,15 @@ def create_product(request):
         forms = ProductForm(request.POST)
         if forms.is_valid():
             forms.save()
-            return redirect('home')
+            return redirect('product-list')
     context = {
         'form': forms
     }
     return render(request, 'store/create_product.html', context)
+
+
+class ProductListView(ListView):
+    model = Product
+    template_name = 'store/product_list.html'
+    context_object_name = 'product'
+
