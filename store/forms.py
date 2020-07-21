@@ -94,9 +94,9 @@ class SeasonForm(forms.ModelForm):
 class DropForm(forms.ModelForm):
     class Meta:
         model = Drop
-        fields = '__all__'
+        fields = ['name']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'})
+            'name': forms.TextInput(attrs={'class': 'form-control', 'id': 'name'})
         }
 
 

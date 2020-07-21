@@ -75,3 +75,16 @@ def create_season(request):
         'form': forms
     }
     return render(request, 'store/create_season.html', context)
+
+# Drop views
+def create_drop(request):
+    forms = DropForm()
+    if request.method == 'POST':
+        forms = DropForm(request.POST)
+        if forms.is_valid():
+            forms.save()
+            return redirect('home')
+    context = {
+        'form': forms
+    }
+    return render(request, 'store/create_drop.html', context)
