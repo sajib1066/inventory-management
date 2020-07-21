@@ -4,9 +4,18 @@ from django.views.generic import ListView
 from users.models import User
 from .models import (
     Supplier,
-    Buyer
+    Buyer,
+    Season,
+    Drop,
+    Product
 )
-from .forms import SupplierForm, BuyerForm, SeasonForm, DropForm, ProductForm
+from .forms import (
+    SupplierForm,
+    BuyerForm,
+    SeasonForm,
+    DropForm,
+    ProductForm
+)
 
 # Supplier views
 def create_supplier(request):
@@ -70,11 +79,18 @@ def create_season(request):
         forms = SeasonForm(request.POST)
         if forms.is_valid():
             forms.save()
-            return redirect('home')
+            return redirect('season-list')
     context = {
         'form': forms
     }
     return render(request, 'store/create_season.html', context)
+
+
+class SeasonListView(ListView):
+    model = Season
+    template_name = 'store/season_list.html'
+    context_object_name = 'season'
+
 
 # Drop views
 def create_drop(request):
