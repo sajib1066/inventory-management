@@ -51,8 +51,13 @@ def create_buyer(request):
             if password == retype_password:
                 user = User.objects.create_user(username=username, password=password, email=email, is_buyer=True)
                 Buyer.objects.create(user=user, name=name, address=address)
-                return redirect('home')
+                return redirect('buyer-list')
     context = {
         'form': forms
     }
     return render(request, 'store/create_buyer.html', context)
+
+class BuyerListView(ListView):
+    model = Buyer
+    template_name = 'store/buyer_list.html'
+    context_object_name = 'buyer'
