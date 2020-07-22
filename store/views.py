@@ -157,7 +157,7 @@ def create_order(request):
                 buyer=buyer,
                 season=season,
                 drop=drop,
-                status='processing'
+                status='pending'
             )
             return redirect('order-list')
     context = {
