@@ -131,3 +131,8 @@ class DeliveryForm(forms.ModelForm):
     class Meta:
         model = Delivery
         fields = '__all__'
+
+        widgets = {
+            'order': forms.Select(attrs={'class': 'form-control', 'id': 'order'}),
+            'courier_name': forms.TextInput(attrs={'class': 'form-control', 'id': 'courier_name'}),
+        }

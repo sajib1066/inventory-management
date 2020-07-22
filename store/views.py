@@ -170,3 +170,17 @@ class OrderListView(ListView):
     model = Order
     template_name = 'store/order_list.html'
     context_object_name = 'order'
+
+
+# Delivery views
+def create_delivery(request):
+    forms = DeliveryForm()
+    if request.method == 'POST':
+        forms = DeliveryForm(request.POST)
+        if forms.is_valid():
+            forms.save()
+            return redirect('dashboard')
+    context = {
+        'form': forms
+    }
+    return render(request, 'store/create_delivery.html', context)
