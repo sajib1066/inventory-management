@@ -6,6 +6,7 @@ from .views import (
     create_season,
     create_drop,
     create_product,
+    create_order,
 
     SupplierListView,
     BuyerListView,
@@ -20,6 +21,7 @@ urlpatterns = [
     path('create-season/', create_season, name='create-season'),
     path('create-drop/', create_drop, name='create-drop'),
     path('create-product/', create_product, name='create-product'),
+    path('create-order/', create_order, name='create-order'),
 
     path('supplier-list/', SupplierListView.as_view(), name='supplier-list'),
     path('buyer-list/', BuyerListView.as_view(), name='buyer-list'),

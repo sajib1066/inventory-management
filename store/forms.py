@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Season, Drop, Product
+from .models import Season, Drop, Product, Order, Delivery
 
 
 class SupplierForm(forms.Form):
@@ -109,3 +109,25 @@ class ProductForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-control', 'id': 'name'}),
             'sortno': forms.NumberInput(attrs={'class': 'form-control', 'id': 'sortno'})
         }
+
+
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['supplier', 'product', 'design', 'color', 'buyer', 'season', 'drop']
+
+        widgets = {
+            'supplier': forms.Select(attrs={'class': 'form-control', 'id': 'supplier'}),
+            'product': forms.Select(attrs={'class': 'form-control', 'id': 'product'}),
+            'design': forms.TextInput(attrs={'class': 'form-control', 'id': 'design'}),
+            'color': forms.TextInput(attrs={'class': 'form-control', 'id': 'color'}),
+            'buyer': forms.Select(attrs={'class': 'form-control', 'id': 'buyer'}),
+            'season': forms.Select(attrs={'class': 'form-control', 'id': 'season'}),
+            'drop': forms.Select(attrs={'class': 'form-control', 'id': 'drop'}),
+        }
+
+
+class DeliveryForm(forms.ModelForm):
+    class Meta:
+        model = Delivery
+        fields = '__all__'

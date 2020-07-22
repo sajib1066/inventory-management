@@ -7,14 +7,18 @@ from .models import (
     Buyer,
     Season,
     Drop,
-    Product
+    Product,
+    Order,
+    Delivery
 )
 from .forms import (
     SupplierForm,
     BuyerForm,
     SeasonForm,
     DropForm,
-    ProductForm
+    ProductForm,
+    OrderForm,
+    DeliveryForm
 )
 
 # Supplier views
@@ -131,3 +135,32 @@ class ProductListView(ListView):
     template_name = 'store/product_list.html'
     context_object_name = 'product'
 
+
+# Order views
+def create_order(request):
+    forms = OrderForm()
+    if request.method == 'POST':
+        forms = OrderForm(request.POST)
+        if forms.is_valid():
+            supplier = forms.cleaned_data['supplier']
+            product = forms.cleaned_data['product']
+            design = forms.cleaned_data['design']
+            color = forms.cleaned_data['color']
+            buyer = forms.cleaned_data['buyer']
+            season = forms.cleaned_data['season']
+            drop = forms.cleaned_data['drop']
+            Order.objects.create(
+                supplier=supplier,
+                product=product,
+                design=design,
+                color=color,
+                buyer=buyer,
+                season=season,
+                drop=drop,
+                status='processing'
+            )
+            return redirect('dashboard')
+    context = {
+        'form': forms
+    }
+    return render(request, 'store/create_order.html', context)
