@@ -67,7 +67,13 @@
                                 <td>{{ order.drop }}</td>
                                 <td>{{ order.created_date }}</td>
                                 <td>
-                                    <a class="btn btn-info" href="">{{ order.status }}</a>
+                                    {% if order.status == 'pending' %}
+                                        <a class="btn btn-primary" href="">{{ order.status }}</a>
+                                    {% elif order.status == 'decline' %}
+                                        <a class="btn btn-danger" href="">{{ order.status }}</a>
+                                    {% else %}
+                                        <a class="btn btn-info" href="">{{ order.status }}</a>
+                                    {% endif %}
                                 </td>
                             </tr>
                             {% endfor %}
