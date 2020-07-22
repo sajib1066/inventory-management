@@ -176,7 +176,11 @@ def create_order(request):
 class OrderListView(ListView):
     model = Order
     template_name = 'store/order_list.html'
-    context_object_name = 'order'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['order'] = Order.objects.all().order_by('-id')
+        return context
 
 
 # Delivery views
