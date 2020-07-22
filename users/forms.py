@@ -8,5 +8,6 @@ class LoginForm(forms.Form):
     }))
     password = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
-        'placeholder': 'Password'
+        'placeholder': 'Password',
+        'type': 'password'
     }))
