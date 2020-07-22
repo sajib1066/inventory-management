@@ -13,6 +13,7 @@ from .views import (
     SeasonListView,
     DropListView,
     ProductListView,
+    OrderListView,
 )
 
 urlpatterns = [
@@ -28,4 +29,5 @@ urlpatterns = [
     path('season-list/', SeasonListView.as_view(), name='season-list'),
     path('drop-list/', DropListView.as_view(), name='drop-list'),
     path('product-list/', ProductListView.as_view(), name='product-list'),
+    path('order-list/', OrderListView.as_view(), name='order-list'),
 ]

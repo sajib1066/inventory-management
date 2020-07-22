@@ -159,8 +159,14 @@ def create_order(request):
                 drop=drop,
                 status='processing'
             )
-            return redirect('dashboard')
+            return redirect('order-list')
     context = {
         'form': forms
     }
     return render(request, 'store/create_order.html', context)
+
+
+class OrderListView(ListView):
+    model = Order
+    template_name = 'store/order_list.html'
+    context_object_name = 'order'
