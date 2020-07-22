@@ -95,90 +95,50 @@
                                 <thead>
                                     <tr>
                                         <th class="serial">#</th>
-                                        <th class="avatar">Avatar</th>
-                                        <th>ID</th>
-                                        <th>Name</th>
+                                        <th>Supplier</th>
                                         <th>Product</th>
-                                        <th>Quantity</th>
+                                        <th>Design</th>
+                                        <th>Color</th>
+                                        <th>Buyer</th>
+                                        <th>Season</th>
+                                        <th>Drop</th>
+                                        <th>Date</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% if orders %}
+                                    {% for order in orders %}
                                     <tr>
-                                        <td class="serial">1.</td>
-                                        <td class="avatar">
-                                            <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="images/avatar/1.jpg" alt=""></a>
-                                            </div>
-                                        </td>
-                                        <td> #5469 </td>
-                                        <td>  <span class="name">Louis Stanley</span> </td>
-                                        <td> <span class="product">iMax</span> </td>
-                                        <td><span class="count">231</span></td>
+                                        <td class="serial">{{ forloop.counter }}</td>
+                                        <td>{{ order.supplier }}</td>
+                                        <td>{{ order.product }}</td>
+                                        <td>{{ order.design }}</td>
+                                        <td>{{ order.color }}</td>
+                                        <td>{{ order.buyer }}</td>
+                                        <td>{{ order.season }}</td>
+                                        <td>{{ order.drop }}</td>
+                                        <td>{{ order.created_date }}</td>
                                         <td>
-                                            <span class="badge badge-complete">Complete</span>
+                                            {% if order.status == 'pending' %}
+                                                <a class="btn btn-warning" href="">{{ order.status }}</a>
+                                            {% elif order.status == 'decline' %}
+                                                <a class="btn btn-danger" href="">{{ order.status }}</a>
+                                            {% elif order.status == 'complete' %}
+                                                <a class="btn btn-success" href="">{{ order.status }}</a>
+                                            {% elif order.status == 'approved' %}
+                                                <a class="btn btn-primary" href="">{{ order.status }}</a>
+                                            {% elif order.status == 'bulk' %}
+                                                <a class="btn btn-secondary" href="">{{ order.status }}</a>
+                                            {% else %}
+                                                <a class="btn btn-info" href="">{{ order.status }}</a>
+                                            {% endif %}
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="serial">2.</td>
-                                        <td class="avatar">
-                                            <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="images/avatar/2.jpg" alt=""></a>
-                                            </div>
-                                        </td>
-                                        <td> #5468 </td>
-                                        <td>  <span class="name">Gregory Dixon</span> </td>
-                                        <td> <span class="product">iPad</span> </td>
-                                        <td><span class="count">250</span></td>
-                                        <td>
-                                            <span class="badge badge-complete">Complete</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">3.</td>
-                                        <td class="avatar">
-                                            <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="images/avatar/3.jpg" alt=""></a>
-                                            </div>
-                                        </td>
-                                        <td> #5467 </td>
-                                        <td>  <span class="name">Catherine Dixon</span> </td>
-                                        <td> <span class="product">SSD</span> </td>
-                                        <td><span class="count">250</span></td>
-                                        <td>
-                                            <span class="badge badge-complete">Complete</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">4.</td>
-                                        <td class="avatar">
-                                            <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="images/avatar/4.jpg" alt=""></a>
-                                            </div>
-                                        </td>
-                                        <td> #5466 </td>
-                                        <td>  <span class="name">Mary Silva</span> </td>
-                                        <td> <span class="product">Magic Mouse</span> </td>
-                                        <td><span class="count">250</span></td>
-                                        <td>
-                                            <span class="badge badge-pending">Pending</span>
-                                        </td>
-                                    </tr>
-                                    <tr class=" pb-0">
-                                        <td class="serial">5.</td>
-                                        <td class="avatar pb-0">
-                                            <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="images/avatar/6.jpg" alt=""></a>
-                                            </div>
-                                        </td>
-                                        <td> #5465 </td>
-                                        <td>  <span class="name">Johnny Stephens</span> </td>
-                                        <td> <span class="product">Monitor</span> </td>
-                                        <td><span class="count">250</span></td>
-                                        <td>
-                                            <span class="badge badge-complete">Complete</span>
-                                        </td>
-                                    </tr>
+                                    {% endfor %}
+                                    {% else %}
+                                        <tr><td>No Order Data</td></tr>
+                                    {% endif %}
                                 </tbody>
                             </table>
                         </div> <!-- /.table-stats -->
