@@ -179,8 +179,14 @@ def create_delivery(request):
         forms = DeliveryForm(request.POST)
         if forms.is_valid():
             forms.save()
-            return redirect('dashboard')
+            return redirect('delivery-list')
     context = {
         'form': forms
     }
     return render(request, 'store/create_delivery.html', context)
+
+
+class DeliveryListView(ListView):
+    model = Delivery
+    template_name = 'store/delivery_list.html'
+    context_object_name = 'delivery'
