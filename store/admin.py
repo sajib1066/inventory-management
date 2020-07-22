@@ -5,7 +5,9 @@ from .models import (
     Buyer,
     Season,
     Drop,
-    Product
+    Product,
+    Order,
+    Delivery
 )
 
 class SupplierAdmin(admin.ModelAdmin):
@@ -19,3 +21,5 @@ admin.site.register(Buyer, BuyerAdmin)
 admin.site.register(Season)
 admin.site.register(Drop)
 admin.site.register(Product)
+admin.site.register(Order)
+admin.site.register(Delivery)
