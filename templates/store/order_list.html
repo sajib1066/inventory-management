@@ -68,9 +68,15 @@
                                 <td>{{ order.created_date }}</td>
                                 <td>
                                     {% if order.status == 'pending' %}
-                                        <a class="btn btn-primary" href="">{{ order.status }}</a>
+                                        <a class="btn btn-warning" href="">{{ order.status }}</a>
                                     {% elif order.status == 'decline' %}
                                         <a class="btn btn-danger" href="">{{ order.status }}</a>
+                                    {% elif order.status == 'complete' %}
+                                        <a class="btn btn-success" href="">{{ order.status }}</a>
+                                    {% elif order.status == 'approved' %}
+                                        <a class="btn btn-primary" href="">{{ order.status }}</a>
+                                    {% elif order.status == 'bulk' %}
+                                        <a class="btn btn-secondary" href="">{{ order.status }}</a>
                                     {% else %}
                                         <a class="btn btn-info" href="">{{ order.status }}</a>
                                     {% endif %}
