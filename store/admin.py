@@ -10,11 +10,14 @@ from .models import (
     Delivery
 )
 
+
 class SupplierAdmin(admin.ModelAdmin):
     list_display = ['user', 'name', 'address', 'created_date']
 
+
 class BuyerAdmin(admin.ModelAdmin):
     list_display = ['user', 'name', 'address', 'created_date']
+
 
 admin.site.register(Supplier, SupplierAdmin)
 admin.site.register(Buyer, BuyerAdmin)

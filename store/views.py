@@ -22,6 +22,7 @@ from .forms import (
     DeliveryForm
 )
 
+
 # Supplier views
 @login_required(login_url='login')
 def create_supplier(request):
@@ -36,7 +37,10 @@ def create_supplier(request):
             password = forms.cleaned_data['password']
             retype_password = forms.cleaned_data['retype_password']
             if password == retype_password:
-                user = User.objects.create_user(username=username, password=password, email=email, is_supplier=True)
+                user = User.objects.create_user(
+                    username=username, password=password,
+                    email=email, is_supplier=True
+                )
                 Supplier.objects.create(user=user, name=name, address=address)
                 return redirect('supplier-list')
     context = {
@@ -65,13 +69,17 @@ def create_buyer(request):
             password = forms.cleaned_data['password']
             retype_password = forms.cleaned_data['retype_password']
             if password == retype_password:
-                user = User.objects.create_user(username=username, password=password, email=email, is_buyer=True)
+                user = User.objects.create_user(
+                    username=username, password=password,
+                    email=email, is_buyer=True
+                )
                 Buyer.objects.create(user=user, name=name, address=address)
                 return redirect('buyer-list')
     context = {
         'form': forms
     }
     return render(request, 'store/create_buyer.html', context)
+
 
 class BuyerListView(ListView):
     model = Buyer
@@ -176,7 +184,7 @@ def create_order(request):
 class OrderListView(ListView):
     model = Order
     template_name = 'store/order_list.html'
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['order'] = Order.objects.all().order_by('-id')

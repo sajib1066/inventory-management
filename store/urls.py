@@ -8,7 +8,6 @@ from .views import (
     create_product,
     create_order,
     create_delivery,
-
     SupplierListView,
     BuyerListView,
     SeasonListView,

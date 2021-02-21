@@ -68,7 +68,6 @@ class Order(models.Model):
     status = models.CharField(max_length=10, choices=STATUS_CHOICE)
     created_date = models.DateField(auto_now_add=True)
 
-
     def __str__(self):
         return self.product.name
 

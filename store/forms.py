@@ -41,6 +41,7 @@ class SupplierForm(forms.Form):
         'data-val-required': 'Please enter retype_password',
     }))
 
+
 class BuyerForm(forms.Form):
     name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
@@ -86,8 +87,12 @@ class SeasonForm(forms.ModelForm):
         fields = ['name', 'description']
 
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', 'id': 'name'}),
-            'description': forms.TextInput(attrs={'class': 'form-control', 'id': 'description'})
+            'name': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'name'
+            }),
+            'description': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'description'
+            })
         }
 
 
@@ -96,9 +101,10 @@ class DropForm(forms.ModelForm):
         model = Drop
         fields = ['name']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', 'id': 'name'})
+            'name': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'name'
+            })
         }
-
 
 
 class ProductForm(forms.ModelForm):
@@ -106,24 +112,44 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = ['name', 'sortno']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', 'id': 'name'}),
-            'sortno': forms.NumberInput(attrs={'class': 'form-control', 'id': 'sortno'})
+            'name': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'name'
+            }),
+            'sortno': forms.NumberInput(attrs={
+                'class': 'form-control', 'id': 'sortno'
+            })
         }
 
 
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ['supplier', 'product', 'design', 'color', 'buyer', 'season', 'drop']
+        fields = [
+            'supplier', 'product', 'design', 'color', 'buyer', 'season', 'drop'
+        ]
 
         widgets = {
-            'supplier': forms.Select(attrs={'class': 'form-control', 'id': 'supplier'}),
-            'product': forms.Select(attrs={'class': 'form-control', 'id': 'product'}),
-            'design': forms.TextInput(attrs={'class': 'form-control', 'id': 'design'}),
-            'color': forms.TextInput(attrs={'class': 'form-control', 'id': 'color'}),
-            'buyer': forms.Select(attrs={'class': 'form-control', 'id': 'buyer'}),
-            'season': forms.Select(attrs={'class': 'form-control', 'id': 'season'}),
-            'drop': forms.Select(attrs={'class': 'form-control', 'id': 'drop'}),
+            'supplier': forms.Select(attrs={
+                'class': 'form-control', 'id': 'supplier'
+            }),
+            'product': forms.Select(attrs={
+                'class': 'form-control', 'id': 'product'
+            }),
+            'design': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'design'
+            }),
+            'color': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'color'
+            }),
+            'buyer': forms.Select(attrs={
+                'class': 'form-control', 'id': 'buyer'
+            }),
+            'season': forms.Select(attrs={
+                'class': 'form-control', 'id': 'season'
+            }),
+            'drop': forms.Select(attrs={
+                'class': 'form-control', 'id': 'drop'
+            }),
         }
 
 
@@ -133,6 +159,10 @@ class DeliveryForm(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'order': forms.Select(attrs={'class': 'form-control', 'id': 'order'}),
-            'courier_name': forms.TextInput(attrs={'class': 'form-control', 'id': 'courier_name'}),
+            'order': forms.Select(attrs={
+                'class': 'form-control', 'id': 'order'
+            }),
+            'courier_name': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'courier_name'
+            }),
         }
